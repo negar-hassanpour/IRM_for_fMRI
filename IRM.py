@@ -21,6 +21,9 @@ print('Flags:')
 for k,v in sorted(vars(flags).items()):
 	print("\t{}: {}".format(k, v))
 
+def penalty(error, params):
+	return autograd.grad(error, params, create_graph=True)[0].pow(2).mean()
+
 data, num_feats, num_class = load_data()
 
 final_train_accs = []

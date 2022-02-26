@@ -5,7 +5,6 @@ from torch import nn, optim, autograd
 
 import scipy.io
 
-main_dir = '/local/scratch/hassanpo/tony/'
 data_file = 'DS007-stopmanual_stopvocal-WB-std4mm-DYL-TempAlign.mat'
 
 class MLP(nn.Module):
@@ -27,9 +26,6 @@ def mean_accuracy(logits, y):
 	accuracy = (logits.argmax(dim=1) == y).sum().float() / float( y.size(0) )
 	return accuracy
 
-def penalty(error, params):
-	return autograd.grad(error, params, create_graph=True)[0].pow(2).mean()
-
 def pretty_print(*values):
 	col_width = 13
 	def format_val(v):
@@ -40,8 +36,7 @@ def pretty_print(*values):
 	print("	 ".join(str_values))
 
 def load_data():
-	mat = scipy.io.loadmat(main_dir+'data/'+data_file)
-	print(len(np.unique(mat['subject'])))
+	mat = scipy.io.loadmat('data/'+data_file)
 
 	data = {}
 	for i, item in enumerate(np.squeeze(mat['subject'])):
