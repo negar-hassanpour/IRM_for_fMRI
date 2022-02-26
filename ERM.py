@@ -7,7 +7,7 @@ from torch import nn, optim, autograd
 
 from utils import *
 
-parser = argparse.ArgumentParser(description='Colored MNIST')
+parser = argparse.ArgumentParser(description='ERM for fMRI')
 parser.add_argument('--hidden_dim', type=int, default=256)
 parser.add_argument('--l2_regularizer_weight', type=float,default=0.001)
 parser.add_argument('--lr', type=float, default=0.001)

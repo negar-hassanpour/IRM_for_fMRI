@@ -7,13 +7,13 @@ from torch import nn, optim, autograd
 
 from utils import *
 
-parser = argparse.ArgumentParser(description='Colored MNIST')
+parser = argparse.ArgumentParser(description='IRM for fMRI')
 parser.add_argument('--hidden_dim', type=int, default=256)
 parser.add_argument('--l2_regularizer_weight', type=float,default=0.001)
 parser.add_argument('--lr', type=float, default=0.001)
 parser.add_argument('--n_restarts', type=int, default=10)
 parser.add_argument('--penalty_anneal_iters', type=int, default=100)
-parser.add_argument('--penalty_weight', type=float, default=1.0)
+parser.add_argument('--penalty_weight', type=float, default=1e4)
 parser.add_argument('--steps', type=int, default=501)
 flags = parser.parse_args()
 
